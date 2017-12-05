@@ -40,7 +40,7 @@ module.exports = function(passport) {
   passport.use(new FacebookStrategy({
     clientID : '2037750849791001',
     clientSecret : '3e144ae0337664c466996e4d4aa5d59e',
-    callbackURL : 'https://hidden-atoll-17224.herokuapp.com/auth/facebook/callback',
+    callbackURL : 'https://pure-sea-42862.herokuapp.com/auth/facebook/callback',
     profileFields : ["name", "displayName", "emails", "photos", "id"]
     
   }, function(token, refreshToken, profile, done) {
