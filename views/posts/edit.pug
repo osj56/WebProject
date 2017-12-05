@@ -1,0 +1,91 @@
+extends ../layout
+
+block content
+  .container
+    if post.id
+      h1.page-header 이벤트 수정
+    else
+      h1.page-header 이벤트 작성
+
+    
+    form(action = (post.id) ? "/posts/#{post.id}?_method=PUT" : "/posts", method='POST')
+      .form-group
+        label(for='title') 이벤트이름
+        input.form-control(type='text', id='title', name='title', placeholder='이벤트이름을 적어주세요', value=post.title)
+      .form-group
+        label(for='content') 이벤트 설명
+        textarea.form-control(id='content', rows='10', name='content', placeholder='이벤트에 대해 설명해주세요')= post.content
+      .form-group
+        label(for='pay') 가격
+        input.form-control(type='text', id='pay', name='pay', placeholder='무료이면 무료라 입력, 유료이면 가격입력', value=post.pay)
+      .form-group
+        label(for='address') 장소
+        input.form-address(type='button', onclick='execDaumPostcode()', value='우편번호 찾기')
+        input.form-control(type='text', id='postcode', name='postcode', placeholder='우편번호', value=post.postcode)
+        input.form-control(type='text', id='address', name='address', placeholder='주소' ,value=post.address)
+        input.form-control(type='text', id='sido', name='sido', placeholder='도시', value=post.sido)
+        input.form-control(type='text', id='address2', name='address2', placeholder='상세주소', value=post.address2) 
+      .form-group
+        label(for='stime') 시작시간
+        input.form-control(type='text', id='stime', name='stime', placeholder='시작시간', value=post.stime)
+      .form-group
+        label(for='ftime') 종료시간
+        input.form-control(type='text', id='ftime', name='ftime', placeholder='종료시간', value=post.ftime)
+      .form-group
+        label(for='org') 등록 조직 이름
+        input.form-control(type='text', id='org', name='org', placeholder='등록 조직 이름', value=post.org)
+      .form-group
+        label(for='orgn') 등록 조직 설명
+        textarea.form-control(id='orgn', rows='10', name='orgn', placeholder='등록조직에 대해 설명해주세요')= post.orgn
+
+      .form-group
+        label(for='person') 예약 가능 인원
+        select.form-control(name='person', id='person')
+          option 1명
+          option 2명
+          option 3명
+          option 4명
+          option 5명
+          option 6명
+          option 7명
+          option 8명
+          option 9명
+          option 10명
+
+      .form-group
+        label(for='var') 이벤트 종류
+        select.form-control(name='var', id='var')
+          option Sports
+          option Voyage
+          option Seminar
+          option Festival
+          option Shopping
+          option Charity
+          option Exam
+          option Fund
+          option Education
+          option Media
+
+      .form-group
+        label(for='var1') 이벤트 분야
+        select.form-control(name='var1', id='var1')
+          option Health
+          option Programming 
+          option Extreme and Thrill 
+          option Relax
+          option Mathmatics
+          option Money Investments
+          option Advertisements
+          option Big Sale
+          option Hotel
+          option Free Market
+      .form-group
+        label(for='fileupload')  Select a file to upload
+        input.fileupload(type='file', name='fileupload', value='fileupload')   
+      div.form-actions
+        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+        | 
+        button.btn.btn-primary(type='submit') 완료
+
+      
+               script(type='text/javascript', src='/javascripts/address.js')

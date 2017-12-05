@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header= post.title
+    p
+      b by #{post.email}
+      | 
+      span at #{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
+      | (예약 가능 인원 : #{post.person})
+      | (조회수 #{post.read})
+    p 이벤트 설명
+    p.well(style='white-space:pre;')= post.content
+    p 시작 시간
+    p.well(style='white=space:pre;')= post.stime
+    p 종료 시간
+    p.well(style='white=space:pre;')= post.ftime
+    p 가격
+    p.well(style='white-space:pre;')= post.pay
+    p 우편번호
+    p.well(style='white-space:pre;')= post.postcode
+    p 주소
+    p.well(style='white-space:pre;')= post.address 
+    p 시
+    p.well(style='white-space:pre;')= post.sido
+    p 등록 조직 이름
+    p.well(style='white-space:pre;')= post.org
+    p 등록 조직 설명
+    p.well(style='white-space:pre;')= post.orgn
+    p 이벤트 종류
+    p.well(style='white-space:pre;')= post.var
+    p 이벤트 분야
+    p.well(style='white-space:pre;')= post.var1
+    p 사진 업로드
+    p.well(style='white-space:pre;')= post.fileupload
+
+      
+
+
+    
+
+
+
+        
+    a.btn.btn-default(href='/posts') 목록
