@@ -16,10 +16,10 @@ var users = require('./routes/users');
 var routeAuth = require('./routes/auth');
 var posts = require('./routes/posts');
 var books = require('./routes/books');
-
+var passport = require('passport');
 var app = express();
 
-
+var passportConfig = require('./lib/passport-config');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 if (app.get('env') === 'development') {
@@ -58,7 +58,7 @@ app.use('/bower_components',  express.static(path.join(__dirname, '/bower_compon
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+passportConfig(passport);
 app.use(function(req, res, next) {
   console.log("REQ USER", req.user);
   res.locals.currentUser = req.user;
