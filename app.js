@@ -58,7 +58,7 @@ app.use('/bower_components',  express.static(path.join(__dirname, '/bower_compon
 
 app.use(passport.initialize());
 app.use(passport.session());
-passportConfig(passport);
+
 app.use(function(req, res, next) {
   console.log("REQ USER", req.user);
   res.locals.currentUser = req.user;
