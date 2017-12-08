@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
   app.post('/signin', passport.authenticate('local-signin', {
-    successRedirect : '/', 
+    successRedirect : '/posts', 
     failureRedirect : '/signin',
     failureFlash : true 
   }));
@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
     }),
     function(req, res, next) {
       req.flash('success', '로그인되었습니다.');
-      res.redirect('/');
+      res.redirect('/posts');
     }
   );
 
